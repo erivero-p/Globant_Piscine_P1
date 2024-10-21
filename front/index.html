@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Creator</title>
+    <meta name="description" content="Create and share your own unique Pokémon combinations with friends using the Pokémon Creator app.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark ctm-navbar" role="navigation">
+        <div class="container-fluid">
+            <span class="navbar-brand" id="brand">Pokémon Creator</span>
+            <div class="d-flex ms-auto align-items-center" id="authButtons">
+                <button class="btn ctm-btn me-2" id="loginBtn">Log in</button>
+                <button class="btn ctm-btn" id="signupBtn">Sign up</button>
+            </div>
+        </div>
+    </nav>
+    <main class="container mt-5">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 mb-4">
+                <div id="authForms" class="container ctm-card mb-4" style="display: none;">
+                    <form id="loginForm" style="display: none;">
+                        <h2 class="text-center ctm-text-title">Log In</h2>
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control ctm-text-dark" id="loginEmail" placeholder="Email" required>
+                            <label for="loginEmail" class="ctm-text-dark">Email</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control ctm-text-dark" id="loginPassword" placeholder="Password" required>
+                            <label for="loginPassword" class="ctm-text-dark">Password</label>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn ctm-btn">Log In</button>
+                        </div>
+                    </form>
+                    <form id="signupForm" style="display: none;">
+                        <h2 class="text-center ctm-text-title">Sign Up</h2>
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control ctm-text-dark" id="signupEmail" placeholder="Email" required>
+                            <label for="signupEmail" class="ctm-text-dark">Email</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control ctm-text-dark" id="signupPassword" placeholder="Password" required>
+                            <label for="signupPassword" class="ctm-text-dark">Password</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control ctm-text-dark" id="signupConfirmPassword" placeholder="Confirm Password" required>
+                            <label for="signupConfirmPassword" class="ctm-text-dark">Confirm Password</label>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn ctm-btn">Sign Up</button>
+                        </div>
+                    </form>
+                </div>
+                <div id="pokemonCreator" class="container ctm-card">
+                    <h1 class="text-center ctm-text-title">Generate a new Pokémon</h1>
+                    <div id="loginMessage" class="alert alert-info text-center mb-4" role="alert">
+                        Please log in before creating your Pokémon!
+                    </div>
+                    <form id="pokemonForm" style="display: none;">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control ctm-text-dark" id="animalInput" maxlength="100" placeholder="Animal" required>
+                            <label for="animalInput" class="ctm-text-dark">Animal</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control ctm-text-dark" id="typeInput" maxlength="100" placeholder="Type" required>
+                            <label for="typeInput" class="ctm-text-dark">Type</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control ctm-text-dark" id="abilityInput" maxlength="100" placeholder="Special Ability" required>
+                            <label for="abilityInput" class="ctm-text-dark">Special Ability</label>
+                        </div>
+                        <div class="mb-3">
+                            <label for="sizeSelect" class="form-label visually-hidden">Size</label>
+                            <select class="form-select form-select-lg p-3" id="sizeSelect" aria-label="Select Pokémon size" required>
+                                <option value="" selected disabled hidden>Size</option>
+                                <option value="small">Small</option>
+                                <option value="medium">Medium</option>
+                                <option value="large">Large</option>
+                            </select>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn ctm-btn">Create Pokémon</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 d-flex justify-content-center align-items-center">
+                <div id="pokemonImage" class="text-center">
+                    <p class="ctm-text-light">Your Pokémon will appear here</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const pokemonForm = document.getElementById('pokemonForm');
+            const authButtons = document.getElementById('authButtons');
+            const authForms = document.getElementById('authForms');
+            const loginForm = document.getElementById('loginForm');
+            const signupForm = document.getElementById('signupForm');
+            const loginBtn = document.getElementById('loginBtn');
+            const signupBtn = document.getElementById('signupBtn');
+            const pokemonImage = document.getElementById('pokemonImage');
+            const pokemonCreator = document.getElementById('pokemonCreator');
+            const loginMessage = document.getElementById('loginMessage');
+
+            let isAuthenticated = false;
+            let isAuthFormVisible = false;
+
+            function updateAuthState() {
+                if (isAuthenticated) {
+                    authButtons.innerHTML = '<button class="btn ctm-btn" id="logoutBtn">Log out</button>';
+                    document.getElementById('logoutBtn').addEventListener('click', logout);
+                    authForms.style.display = 'none';
+                    pokemonCreator.style.display = 'block';
+                    loginMessage.style.display = 'none';
+                    pokemonForm.style.display = 'block';
+                    isAuthFormVisible = false;
+                } else {
+                    authButtons.innerHTML = `
+                        <button class="btn ctm-btn me-2" id="loginBtn">Log in</button>
+                        <button class="btn ctm-btn" id="signupBtn">Sign up</button>
+                    `;
+                    document.getElementById('loginBtn').addEventListener('click', showLoginForm);
+                    document.getElementById('signupBtn').addEventListener('click', showSignupForm);
+                    if (!isAuthFormVisible) {
+                        authForms.style.display = 'none';
+                        pokemonCreator.style.display = 'block';
+                        loginMessage.style.display = 'block';
+                        pokemonForm.style.display = 'none';
+                    }
+                }
+            }
+
+            function showLoginForm() {
+                loginForm.style.display = 'block';
+                signupForm.style.display = 'none';
+                authForms.style.display = 'block';
+                pokemonCreator.style.display = 'none';
+                isAuthFormVisible = true;
+            }
+
+            function showSignupForm() {
+                loginForm.style.display = 'none';
+                signupForm.style.display = 'block';
+                authForms.style.display = 'block';
+                pokemonCreator.style.display = 'none';
+                isAuthFormVisible = true;
+            }
+
+            function login(e) {
+                e.preventDefault();
+                // Implement actual login logic here
+                isAuthenticated = true;
+                updateAuthState();
+                alert('Logged in successfully!');
+            }
+
+            function signup(e) {
+                e.preventDefault();
+                // Implement actual signup logic here
+                isAuthenticated = true;
+                updateAuthState();
+                alert('Signed up successfully!');
+            }
+
+            function logout() {
+                isAuthenticated = false;
+                updateAuthState();
+                alert('Logged out successfully!');
+            }
+
+            loginForm.addEventListener('submit', login);
+            signupForm.addEventListener('submit', signup);
+
+            pokemonForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                if (!isAuthenticated) {
+                    alert('Please log in to create a Pokémon.');
+                    return;
+                }
+
+                const animal = document.getElementById('animalInput').value;
+                const type = document.getElementById('typeInput').value;
+                const ability = document.getElementById('abilityInput').value;
+                const size = document.getElementById('sizeSelect').value;
+
+                try {
+                    const imageUrl = await generatePokemonImage(animal, type, ability, size);
+                    displayPokemonImage(imageUrl);
+                } catch (error) {
+                    alert('Error generating Pokémon: ' + error.message);
+                }
+            });
+
+            async function generatePokemonImage(animal, type, ability, size) {
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                return `https://via.placeholder.com/300x300.png?text=${animal}+${type}`;
+            }
+
+            function displayPokemonImage(imageUrl) {
+                pokemonImage.innerHTML = `
+                    <img src="${imageUrl}" alt="Generated Pokémon" class="img-fluid rounded">
+                    <button class="btn ctm-btn mt-3" onclick="sharePokemon('${imageUrl}')">Share Pokémon</button>
+                `;
+            }
+            updateAuthState();
+        });
+
+        function sharePokemon(imageUrl) {
+            alert('Sharing functionality to be implemented. Image URL: ' + imageUrl);
+        }
+    </script>
+</body>
+</html>

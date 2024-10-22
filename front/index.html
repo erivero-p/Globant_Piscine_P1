@@ -13,84 +13,81 @@
         <div class="container-fluid">
             <span class="navbar-brand" id="brand">Pokémon Creator</span>
             <div class="d-flex ms-auto align-items-center" id="authButtons">
-                <button class="btn ctm-btn me-2" id="loginBtn">Log in</button>
-                <button class="btn ctm-btn" id="signupBtn">Sign up</button>
+                <button class="btn me-2" id="loginBtn">Log in</button>
+                <button class="btn" id="signupBtn">Sign up</button>
             </div>
         </div>
     </nav>
     <main class="container mt-5 bg-light p-3 rounded-3 shadow-lg">
-        <div class="row">
-            <div class="col-lg-6 col-md-12 mb-4">
-                <div id="authForms" class="container ctm-card mb-4" style="display: none;">
+        <div class="row" id="mainContent">
+            <div class="col-lg-6 col-md-12 mb-4 mx-auto">
+                <div id="authForms" class="container  mb-4" style="display: none;">
                     <form id="loginForm" style="display: none;">
-                        <h2 class="text-center ctm-text-title">Log In</h2>
+                        <h2 class="text-center">Log In</h2>
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control ctm-text-dark" id="loginEmail" placeholder="Email" required>
-                            <label for="loginEmail" class="ctm-text-dark">Email</label>
+                            <input type="email" class="form-control" id="loginEmail" placeholder="Email" required>
+                            <label for="loginEmail" >Email</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="password" class="form-control ctm-text-dark" id="loginPassword" placeholder="Password" required>
-                            <label for="loginPassword" class="ctm-text-dark">Password</label>
+                            <input type="password" class="form-control" id="loginPassword" placeholder="Password" required>
+                            <label for="loginPassword" >Password</label>
                         </div>
                         <div class="d-flex justify-content-center">
-                            <button type="submit" class="btn ctm-btn">Log In</button>
+                            <button type="submit" class="btn">Log In</button>
                         </div>
                     </form>
                     <form id="signupForm" style="display: none;">
-                        <h2 class="text-center ctm-text-title">Sign Up</h2>
+                        <h2 class="text-center">Sign Up</h2>
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control ctm-text-dark" id="signupEmail" placeholder="Email" required>
-                            <label for="signupEmail" class="ctm-text-dark">Email</label>
+                            <input type="email" class="form-control" id="signupEmail" placeholder="Email" required>
+                            <label for="signupEmail" >Email</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="password" class="form-control ctm-text-dark" id="signupPassword" placeholder="Password" required>
-                            <label for="signupPassword" class="ctm-text-dark">Password</label>
+                            <input type="password" class="form-control" id="signupPassword" placeholder="Password" required>
+                            <label for="signupPassword">Password</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="password" class="form-control ctm-text-dark" id="signupConfirmPassword" placeholder="Confirm Password" required>
-                            <label for="signupConfirmPassword" class="ctm-text-dark">Confirm Password</label>
+                            <input type="password" class="form-control" id="signupConfirmPassword" placeholder="Confirm Password" required>
+                            <label for="signupConfirmPassword">Confirm Password</label>
                         </div>
                         <div class="d-flex justify-content-center">
-                            <button type="submit" class="btn ctm-btn">Sign Up</button>
+                            <button type="submit" class="btn">Sign Up</button>
                         </div>
                     </form>
                 </div>
-                <div id="pokemonCreator" class="container ctm-card">
-                    <h1 class="text-center ctm-text-title">Generate a new Pokémon</h1>
+                <div id="pokemonCreator" class="container ">
+                    <h1 class="text-center">Generate a new Pokémon</h1>
                     <div id="loginMessage" class="alert alert-info text-center mb-4" role="alert">
                         Please log in before creating your Pokémon!
                     </div>
-                    <form id="pokemonForm" style="display: none;">
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control ctm-text-dark" id="animalInput" maxlength="100" placeholder="Animal" required>
-                            <label for="animalInput" class="ctm-text-dark">Animal</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control ctm-text-dark" id="typeInput" maxlength="100" placeholder="Type" required>
-                            <label for="typeInput" class="ctm-text-dark">Type</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control ctm-text-dark" id="abilityInput" maxlength="100" placeholder="Special Ability" required>
-                            <label for="abilityInput" class="ctm-text-dark">Special Ability</label>
-                        </div>
-                        <div class="mb-3">
-                            <label for="sizeSelect" class="form-label visually-hidden">Size</label>
-                            <select class="form-select form-select-lg p-3" id="sizeSelect" aria-label="Select Pokémon size" required>
-                                <option value="" selected disabled hidden>Size</option>
-                                <option value="small">Small</option>
-                                <option value="medium">Medium</option>
-                                <option value="large">Large</option>
-                            </select>
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <button type="submit" class="btn ctm-btn">Create Pokémon</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-12 d-flex justify-content-center align-items-center">
-                <div id="pokemonImage" class="text-center">
-                    <p class="ctm-text-light">Your Pokémon will appear here</p>
+                    <div id="pokemonFormContainer" style="display: none;">
+                        <form id="pokemonForm">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="animalInput" maxlength="100" placeholder="Animal" required>
+                                <label for="animalInput" >Animal</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="typeInput" maxlength="100" placeholder="Type" required>
+                                <label for="typeInput" >Type</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="abilityInput" maxlength="100" placeholder="Special Ability" required>
+                                <label for="abilityInput" >Special Ability</label>
+                            </div>
+                            <div class="mb-3">
+                                <label for="sizeSelect" class="form-label visually-hidden">Size</label>
+                                <select class="form-select form-select-lg p-3" id="sizeSelect" aria-label="Select Pokémon size" required>
+                                    <option value="" selected disabled hidden>Size</option>
+                                    <option value="small">Small</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="large">Large</option>
+                                </select>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <button type="submit" class="btn">Create Pokémon</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -105,26 +102,37 @@
             const signupForm = document.getElementById('signupForm');
             const loginBtn = document.getElementById('loginBtn');
             const signupBtn = document.getElementById('signupBtn');
-            const pokemonImage = document.getElementById('pokemonImage');
             const pokemonCreator = document.getElementById('pokemonCreator');
             const loginMessage = document.getElementById('loginMessage');
+            const pokemonFormContainer = document.getElementById('pokemonFormContainer');
+            const mainContent = document.getElementById('mainContent');
 
             let isAuthenticated = false;
             let isAuthFormVisible = false;
 
             function updateAuthState() {
                 if (isAuthenticated) {
-                    authButtons.innerHTML = '<button class="btn ctm-btn" id="logoutBtn">Log out</button>';
+                    authButtons.innerHTML = '<button class="btn" id="logoutBtn">Log out</button>';
                     document.getElementById('logoutBtn').addEventListener('click', logout);
                     authForms.style.display = 'none';
                     pokemonCreator.style.display = 'block';
                     loginMessage.style.display = 'none';
-                    pokemonForm.style.display = 'block';
+                    pokemonFormContainer.style.display = 'block';
                     isAuthFormVisible = false;
+                    mainContent.innerHTML = `
+                        <div class="col-lg-6 col-md-12 mb-4">
+                            ${pokemonCreator.outerHTML}
+                        </div>
+                        <div class="col-lg-6 col-md-12 d-flex justify-content-center align-items-center">
+                            <div id="pokemonImage" class="text-center">
+                                <p>Your Pokémon will appear here</p>
+                            </div>
+                        </div>
+                    `;
                 } else {
                     authButtons.innerHTML = `
-                        <button class="btn ctm-btn me-2" id="loginBtn">Log in</button>
-                        <button class="btn ctm-btn" id="signupBtn">Sign up</button>
+                        <button class="btn me-2" id="loginBtn">Log in</button>
+                        <button class="btn" id="signupBtn">Sign up</button>
                     `;
                     document.getElementById('loginBtn').addEventListener('click', showLoginForm);
                     document.getElementById('signupBtn').addEventListener('click', showSignupForm);
@@ -132,7 +140,12 @@
                         authForms.style.display = 'none';
                         pokemonCreator.style.display = 'block';
                         loginMessage.style.display = 'block';
-                        pokemonForm.style.display = 'none';
+                        pokemonFormContainer.style.display = 'none';
+                        mainContent.innerHTML = `
+                            <div class="col-lg-6 col-md-12 mb-4 mx-auto">
+                                ${pokemonCreator.outerHTML}
+                            </div>
+                        `;
                     }
                 }
             }
@@ -143,6 +156,11 @@
                 authForms.style.display = 'block';
                 pokemonCreator.style.display = 'none';
                 isAuthFormVisible = true;
+                mainContent.innerHTML = `
+                    <div class="col-lg-6 col-md-12 mb-4 mx-auto">
+                        ${authForms.outerHTML}
+                    </div>
+                `;
             }
 
             function showSignupForm() {
@@ -151,6 +169,11 @@
                 authForms.style.display = 'block';
                 pokemonCreator.style.display = 'none';
                 isAuthFormVisible = true;
+                mainContent.innerHTML = `
+                    <div class="col-lg-6 col-md-12 mb-4 mx-auto">
+                        ${authForms.outerHTML}
+                    </div>
+                `;
             }
 
             function login(e) {
@@ -175,12 +198,20 @@
                 alert('Logged out successfully!');
             }
 
-            loginForm.addEventListener('submit', login);
-            signupForm.addEventListener('submit', signup);
+            document.addEventListener('submit', (e) => {
+                if (e.target.id === 'loginForm') {
+                    e.preventDefault();
+                    login(e);
+                } else if (e.target.id === 'signupForm') {
+                    e.preventDefault();
+                    signup(e);
+                } else if (e.target.id === 'pokemonForm') {
+                    e.preventDefault();
+                    createPokemon(e);
+                }
+            });
 
-            pokemonForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-
+            function createPokemon(e) {
                 if (!isAuthenticated) {
                     alert('Please log in to create a Pokémon.');
                     return;
@@ -191,18 +222,14 @@
                 const ability = document.getElementById('abilityInput').value;
                 const size = document.getElementById('sizeSelect').value;
 
-                try {
-                    const imageUrl = await generatePokemonImage(animal, type, ability, size);
-                    displayPokemonImage(imageUrl, animal, type, ability, size);
-                } catch (error) {
-                    alert('Error generating Pokémon: ' + error.message);
-                }
-            });
-
+                generatePokemonImage(animal, type, ability, size)
+                    .then(imageUrl => displayPokemonImage(imageUrl, animal, type, ability, size))
+                    .catch(error => alert('Error generating Pokémon: ' + error.message));
+            }
 
             async function generatePokemonImage(animal, type, ability, size) {
                 await new Promise(resolve => setTimeout(resolve, 1500));
-                const api = `https://api.unsplash.com/search/photos?query=${animal}&client_id=${apiKey}`;
+                const api = `https://api.unsplash.com/search/photos?query=${animal}&client_id=${unsplashKey}`;
                 
                 try {
                     const response = await fetch(api);
@@ -228,9 +255,9 @@
                 `;
             }
 
-            function sharePokemon(imageUrl) {
+            window.sharePokemon = function(imageUrl) {
                 alert('Sharing functionality to be implemented. Image URL: ' + imageUrl);
-            }
+            };
 
             updateAuthState();
         });

@@ -1,7 +1,24 @@
-version: '3'
 services:
-  frontend:
+  server:
+    container_name: server
     build: .
+    env_file: .env
+    volumes:
+      - front:/PokeAPI
+      - back:/backend
     ports:
-      - "3000:3000" #standar port for react
-    
+      - "3000:3000" #standar for react but is funny cause im not using react xd
+
+volumes:
+   front:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./volumes/front
+   back:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./volumes/backend
